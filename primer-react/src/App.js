@@ -1,12 +1,15 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Menu from "./components/Menu";
+import ItemListContainer from "./components/ItemListContainer";
 
 function App() {
 
   return (
     <>
-    <Navbar/>
+    <Menu/>
+
+    {<ItemListContainer nombre={"Uriel"} apellido={"Mendizabal"} />}
     </>
   );
 }
