@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.contador {
+  justify-content: right !important;
+  text-align: right !important;
+}
+
+.bienvenidos {
+  font-size: 35px;
+  color: cadetblue;
+}
