@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Contador from "./Contador";
+import customFetch from "../utils/customFetch";
+import productos from '../utils/productos';
+import ListaItems from "./ListaItems";
 
 
-export default function ItemListContainer({nombre, apellido}) {
+export default function ListaItemsContainer() {
+  const [Item, setItem] = useState([]);
+
+  useEffect(() => {
+    customFetch(3000, productos)
+    .then(resultado => setItem(resultado))
+    .catch(error => console.log(error));
+  }, [Item])
+
 
   return (
     <>
-    <div className="contador container mt-5">
-        <Contador stock={100}/>
-        <div className="bienvenidos">
-          <p className="text-center mt-5">Bienvenido, {nombre} {apellido}</p>
-        </div>
+    <div className="text-center mt-5 d-flex justify-content-center">
+    <ListaItems productos={Item}/>
     </div>
-      
     </>
   );
 }

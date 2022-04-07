@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from 'react-bootstrap';
 
 
-export default function ItemCount({ stock }) {
+export default function Contador({ stock }) {
 
     const [count, setCount] = useState(0);
 
@@ -31,9 +31,9 @@ export default function ItemCount({ stock }) {
   return (
     <>
         <p>
-            <Button variant="outline-danger" onClick={sub} class="mx-2">-</Button>{' '}
+            <Button variant="outline-danger" onClick={sub} className="mx-2">-</Button>{' '}
             {count}
-            {' '}<Button variant="outline-success" onClick={add} class="mx-2">+</Button>
+            {' '}<Button variant="outline-success" onClick={add} className="mx-2">+</Button>
         </p>
 
         <p><Button onClick={onAdd} variant="outline-dark">Agregar al Carrito</Button></p>
