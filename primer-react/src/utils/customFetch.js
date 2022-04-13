@@ -1,4 +1,4 @@
-let isOk = true;
+/* let isOk = true;
 
 
 const customFetch = (time, task) => {
@@ -11,4 +11,4 @@ const customFetch = (time, task) => {
         }
     }, time)})};
 
-export default customFetch;
+export default customFetch; */

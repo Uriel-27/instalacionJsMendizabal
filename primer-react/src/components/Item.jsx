@@ -1,21 +1,19 @@
 import React from 'react';
-import { Card } from "react-bootstrap";
-import Contador from './Contador'
+import styles from './Item.module.css';
 
-export default function Item ({id, nombre, precio, imagen }) {
-return (
-<>
-    <Card key={id} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={imagen} />
-        <Card.Body>
-            <Card.Title>{nombre}</Card.Title>
-            <Card.Text>
-             $ {precio}
-            </Card.Text>
-            <Contador stock={10}/>
-        </Card.Body>
-    </Card>
-</>
-);
-}
+const Item = ({ product }) => {
+    return (
+        <div className={styles.card}>
+            <img src={product.img} alt={product.name} />
+            <div className={styles.cardInfo}>
+                <h3>{product.name}</h3>
+                <h4>$ {product.price}.-</h4>
+                <h5>#{product.category}</h5>
+                <button>Ver detalle</button>
+            </div>
+        </div>
+    );
+};
+
+export default Item;
 

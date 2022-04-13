@@ -1,7 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from "./components/Menu";
-import ListaItemsContainer from "./components/ListaItemsContainer";
+import ItemListContainer from "./components/ItemListContainer";
+
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
     <>
     <Menu/>
 
-    {<ListaItemsContainer nombre={"Uriel"} apellido={"Mendizabal"} />}
+    {<ItemListContainer nombre={"Uriel"} apellido={"Mendizabal"} />}
     </>
   );
 }
