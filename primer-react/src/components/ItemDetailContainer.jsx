@@ -1,22 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import ItemDetail from './ItemDetail';
-import { traerProducto } from '../../utils/products';
+import customFetch from '../utils/customFetch';
+import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
-    const [producto, setProducto] = useState({});
+   
+    const [products, setProducts] = useState({});
+
+    const { id } = useParams()
 
     useEffect(() => {
-        /* fetch('https://fakestoreapi.com/products/1')
-            .then((res) => res.json())
-            .then((json) => console.log(json)); */
-        traerProducto().then((res) => {
-            setProducto(res);
-        });
-    }, []);
+        customFetch(500)
+        .then(resultado => setProducts(resultado.find(i => i.id === Number(id))))
+        .catch(error => console.log(error));
+    }, [id])
+
+    console.log(products)
+
+
 
     return (
         <>
-            <ItemDetail {...producto} />
+            <ItemDetail {...products}/>
         </>
     );
 };

@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { traerProductos } from '../utils/products';
-import ItemList from './ItemList';
+import React from "react";
+import { useEffect, useState } from "react";
+import ItemList from "./ItemList";
+import { useParams } from "react-router";
+import customFetch from "../utils/customFetch";
 
-const ItemListContainer = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        traerProductos()
-            .then((res) => setProducts(res))
-            .catch((error) => console.log(error))
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
+export default function ItemListContainer() {
 
-    return (
-        <>
-            {loading ? (
-                <h1>Cargando productos, espera por favor!</h1>
-            ) : (
-                <ItemList products={products} />
-            )}
-        </>
-    );
-};
+  const [products, setProducts] = useState([]);
 
-export default ItemListContainer;
+  const { category } = useParams()
+
+  useEffect (() => {
+    customFetch(500)
+    .then(resultado => {
+      if(category){
+        setProducts(resultado.filter(i => i.category === category))
+      }else{
+        setProducts(resultado)
+      }
+    })
+    .catch(error => console.log(error));
+  }, [category])
+
+  return (
+    <>
+      <div className="d-flex mt-5 justify-content-center mx-5"><ItemList products={products} /></div>
+    </>
+  );
+}

@@ -1,14 +1,16 @@
-/* let isOk = true;
+import products from "./products";
 
-
-const customFetch = (time, task) => {
-    return new Promise((resolve, reject) => {
+const customFetch = (time) => {
+    return new Promise ((resolve, reject) => {
+        
         setTimeout(() => {
-            if(isOk) {
-            resolve(task);
-        } else {
-            reject('Error');
-        }
-    }, time)})};
+            if(true) {
+                resolve(products)
+            }else{
+                reject("error")
+            }
+        }, time)
+    })
+}
 
-export default customFetch; */
+export default customFetch;

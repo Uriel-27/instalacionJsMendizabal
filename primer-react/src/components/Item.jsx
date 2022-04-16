@@ -1,19 +1,29 @@
-import React from 'react';
-import styles from './Item.module.css';
+import React from "react";
+import { Card } from "react-bootstrap";
+import ItemCount from "./ItemCount";
 
-const Item = ({ product }) => {
-    return (
-        <div className={styles.card}>
-            <img src={product.img} alt={product.name} />
-            <div className={styles.cardInfo}>
-                <h3>{product.name}</h3>
-                <h4>$ {product.price}.-</h4>
-                <h5>#{product.category}</h5>
-                <button>Ver detalle</button>
-            </div>
-        </div>
-    );
-};
 
-export default Item;
+export default function Item({id, name, edition, year, price, image}) {
 
+
+  return (
+    <>
+      <Card className="mx-5" key={id} style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={image} />
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>
+          Edición: {edition}
+          </Card.Text>
+          <Card.Text>
+          Año de publicación: {year}
+          </Card.Text>
+          <Card.Text>
+          $ {price}
+          </Card.Text>
+        </Card.Body>
+        <ItemCount stock={8}/>
+      </Card>
+    </>
+  );
+}
